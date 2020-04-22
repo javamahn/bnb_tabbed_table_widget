@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Updates the URL when the Variable Pairs field changes.</description>
+        <field>variable_pairs</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Update URL onChange of Variable Pairs</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading) {
+		return;
+	}
+	
+	g_form.getReference('cat_item', callback_VariablePairs);
+	
+}
+
+function callback_VariablePairs(item) {
+	var portalSuffix = g_scratchpad.portalSuffix || g_scratchpad.defaultPortalSuffix;
+	var spPage = item.sys_class_name == 'sc_cat_item_guide' ? 'sc_cat_item_guide' : 'sc_cat_item';
+	var url = '/' + portalSuffix + '?id=' + spPage;
+	
+	// these are not sent back to the server; update so the new values are available to other client side scripts
+	g_scratchpad.catItem = item.sys_id;
+	g_scratchpad.spPage = spPage;
+	
+	var params = {};
+	params.sys_id = item.sys_id;
+	var pairs = g_form.getValue('variable_pairs');
+	if (pairs) {
+		pairs = JSON.parse(pairs);
+		for (var key in pairs) {
+			params[key] = pairs[key];
+		}
+	}
+	
+	for (var p in params) {
+		url += '&' + p + '=' + params[p];
+	}
+	
+	g_form.setValue('url', url);
+	
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-09-01 20:26:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0fbb37d9db146300de1cfe1b68961975</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Update URL onChange of Variable Pairs</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_script_client_0fbb37d9db146300de1cfe1b68961975</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2019-05-10 17:55:50</sys_updated_on>
+        <table>x_71627_tab_table_action</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

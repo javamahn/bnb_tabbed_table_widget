@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_embedded_help_content">
+    <sys_embedded_help_content action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <content><![CDATA[<p>Use this form to configure a table action that allows for end user interaction on a selected record. Configuration settings control the type of action, conditions under which it applies, and other behavior and appearance settings.</p>
+<p>A server script action allows an administrator to write a server-side script that will execute when the user clicks the action. The script has access to data about the selected record, and can optionally return a message or redirect. This type also allows for the option of requiring the user to confirm the action prior to the script executing.</p>
+<p>The modal widget type displays another widget in a modal widget (using SPModal). Configuration choices allow for the widget, widget options, and title to be selected. Dynamic values can be used for the variable pairs for the modal widget input, and should be enclosed within double brackets, e.g. {{sys_id}}. The dynamic values available always include sys_id and class_name, as well as each of the field values displayed in the row.</p>
+<p>The catalog item action redirects the user to a service catalog request, optionally with some variables pre-populated. In order for variables to be pre-populated, the SP URL Params variable set must be included in the catalog item. Selecting the catalog item and using the variable pairs field on this form will automatically update the redirect URL. To use a dynamic value for a parameter, enclose the object path within double brackets, e.g. {{number.display_value}}. A related link is also available on this form to help determine the variables available on the selected catalog item.</p>
+<p>Hover over the field names on the form for a brief description.</p>]]></content>
+        <last_sync/>
+        <modifier>normal</modifier>
+        <name>Data Table Action</name>
+        <page>x_71627_tab_table_action</page>
+        <product>1</product>
+        <qualifier/>
+        <role display_value="sp_admin" name="sp_admin">cd640d10d7101200a9addd173e24d4cd</role>
+        <role_order>10</role_order>
+        <snc_created>false</snc_created>
+        <sys_class_name>sys_embedded_help_content</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-11-17 15:15:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>29479bc6dbbd6300de1cfe1b689619ba</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Data Table Action</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_embedded_help_content_29479bc6dbbd6300de1cfe1b689619ba</sys_update_name>
+        <sys_updated_by>dg42xyz</sys_updated_by>
+        <sys_updated_on>2019-11-06 22:59:09</sys_updated_on>
+        <version>all</version>
+    </sys_embedded_help_content>
+    <sys_translated_text action="delete_multiple" query="documentkey=29479bc6dbbd6300de1cfe1b689619ba"/>
+</record_update>

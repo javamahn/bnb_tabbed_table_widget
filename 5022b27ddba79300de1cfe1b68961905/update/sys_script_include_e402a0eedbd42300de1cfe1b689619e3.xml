@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_71627_tab_table.TableActionUtil</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TableActionUtil</name>
+        <script><![CDATA[var TableActionUtil = Class.create();
+TableActionUtil.prototype = {
+	
+    initialize: function() {
+		this.fields = [];
+		this.viewFields = [];
+		this.userID = gs.getUserID();
+    },
+	
+	/*
+	* @function: Gets the Service Portal GlideRecord that is marked as the default portal
+	* @return: GlideRecord
+	*/
+	getDefaultPortal: function() {
+		var spPortal = new GlideRecord('sp_portal');
+		spPortal.addQuery('default', true);
+		spPortal.query();
+		if (spPortal.next()) {
+			return spPortal;
+		}
+	},
+	
+	/*
+	* @function: Gets the URL suffix for the default Service Portal
+	* @return: String
+	*/
+	getDefaultPortalSuffix: function() {
+		return this.getDefaultPortal().getValue('url_suffix');
+	},
+	
+   /*
+    * @function: Gets the variables that are available on a Catalog Item
+    * @input: catItem - sys_id of a Catalog Item
+    * @return: Array
+    */	
+	getAvailableVariables: function(catItem) {
+		var variables = [],
+			variableSets = [];
+		
+		// get variable sets first, so we can do 1 query against the Variable table
+		var varSets = new GlideRecord('io_set_item');
+		varSets.addQuery('sc_cat_item.sys_id', catItem);
+		varSets.query();
+		while (varSets.next()) {
+			variableSets.push(varSets.variable_set.sys_id);
+		}
+		
+		var varOptions = new GlideRecord('item_option_new');
+		var qc = varOptions.addQuery('cat_item.sys_id', catItem);
+		if (variableSets.length > 0) {
+			for (var i = 0; i < variableSets.length; i++) {
+				qc.addOrCondition('variable_set.sys_id', variableSets[i]);
+			}
+		}
+		varOptions.query();
+		while (varOptions.next()) {
+			variables.push(varOptions.name.toString());
+		}
+		
+		return variables.sort();
+	},
+	
+	/*
+	* @function: Gets the variable values available to pass into a Catalog Item action, based on the widget options
+	* @input: tab - sys_id of a Tab record
+	* @input: table - string of table name
+	* @return: Array
+	*/
+	getAvailableVariableValues: function(tab, table) {
+		var grTab = new GlideRecord('x_71627_tab_table_tab');
+		grTab.get(tab);
+
+		// add tab fields
+		var tabOptions = grTab.getValue('widget_options');
+		this._addFields(tabOptions);
+		//this._addViewFields(tabOptions);
+		
+		// add widget instance fields
+		var instanceOptions = grTab.widget_instance.widget_parameters;
+		this._addFields(instanceOptions);
+		//this._addViewFields(instanceOptions);
+		
+		var allFields = this.fields.concat(this.viewFields);
+		return allFields.sort();
+	},
+	
+	/*
+	* @function: Adds fields specified in the widget options
+	* @input: sOptions - JSON string of widget options, ideally containing a fields property
+	* @input: table - table name
+	*/
+	_addFields: function(sOptions, table) {
+		if (!gs.nil(sOptions)) {
+			var options = JSON.parse(sOptions);
+			if (options.fields) {
+				options.fields.split(',').forEach(function(f) {
+					this.fields.push(f);
+				}, this);
+			} else {
+				var fValue = [];
+				if (!gs.nil(table)) {
+					var filteredOptions = this._filterOptions(options, 'table', table);
+					fValue = this._traverse(filteredOptions, 'fields', fValue);
+				} else {
+					fValue = this._traverse(options, 'fields', fValue);
+				}
+				if (!gs.nil(fValue)) {
+					fValue.forEach(function(f) {
+						this.fields.push(f);
+					}, this);
+				}
+			}
+		}
+	},
+	
+	/*
+	* @function: Adds fields from the specified (or default) view
+	* @input: sOptions - JSON string of widget options, ideally containing a view property
+	* @input: table - table name
+	*/
+	_addViewFields: function(sOptions, table) {
+		if (!gs.nil(sOptions)) {
+			var options = JSON.parse(sOptions);
+			var view= '';
+			
+			if (options.view) {
+				view = options.view;
+			} else {
+				var filteredOptions = this._filterOptions(options, 'table', table);
+				view = this._traverse(filteredOptions, 'view', [])[0];
+			}
+			
+			// if no view, try with Default
+			if (gs.nil(view)) {
+				view = 'Default';
+			}
+			
+			var $sp = new GlideSPScriptable();
+			var form = $sp.getForm(table, view);
+			var formFields = this.getFormFields(form);
+			formFields.forEach(function(f) {
+				this.viewFields.push(f);
+			}, this);
+		}
+	},
+	
+   /*
+	* @function: Takes a form object and returns an array of fields that are on that form
+	* @input: form - form object returned from $sp.getForm(table, view)
+	* @return: Array
+	*/
+	getFormFields: function(form) {
+		var fields = [];
+		
+		for (var i = 0; i < form._sections.length; i++) {
+			var section = form._sections[i];
+			for (var j = 0; j < section.columns.length; j++) {
+				var column = section.columns[j];
+				for (var k = 0; k < column.fields.length; k++) {
+					var field = column.fields[k];
+					// don't add activity formatters
+					if (!field.name.startsWith('.formatter.'))
+						fields.push(field.name);
+				}
+			}
+		}
+		
+		return fields;
+	},
+	
+   /*
+	* @function: Filters an object for the desired node found matching a specified value
+	* @input: obj - object to filter
+	* @input: key - string name of key to look for
+	* @input: value - string value to match on
+	* @return: Object
+	*/
+	_filterOptions: function(obj, key, value) {
+		var o = {};
+		var found = false;
+		
+		function filterOptions(obj, key, value) {
+			if (found == true) return;
+			for (var i in obj) {
+				if (i == key && obj[i] == value) {
+					found = true;
+					o = obj;
+					return obj;
+				} else if (obj[i] !== null && typeof(obj[i]) == 'object') {
+					filterOptions(obj[i], key, value);
+				}
+			}
+		}
+		
+		filterOptions(obj, key, value);
+		return o;		
+	},
+	
+   /*
+	* @function: Walks an object to find values matching the specified key
+	* @input: obj - object to traverse
+	* @input: key - string name of key to look for
+	* @input: matches - array of existing matches, pass in blank array [] if starting from scratch
+	* @return: Array
+	*/	
+	_traverse: function(obj, key, matches) {
+		for (var i in obj) {
+			if (i == key) {
+				var str = obj[i];
+				matches.push(str);
+			} else if (obj[i] !== null && typeof(obj[i]) == 'object') {
+				this._traverse(obj[i], key, matches);
+			}
+		}
+		return matches;
+	},
+	
+	/*
+	* @function: Gets the encoded query to apply to the query business rule based on the current user's groups and roles.
+	* @return: String
+	*/
+	restrictQuery: function() {
+		if (gs.hasRole('admin') || gs.hasRole('sp_admin'))
+			return '';
+		
+		var encodedQuery = '';
+		var i;
+		var userGroups = this._getUserGroups();
+		var userRoles = this._getUserRoles();
+		if (userGroups.length > 0) {
+			encodedQuery += 'groupsCONTAINS' + userGroups[0];
+			for (i=1; i<userGroups.length; i++) {
+				encodedQuery += '^ORgroupsCONTAINS' + userGroups[i];
+			}
+			encodedQuery += '^ORgroupsISEMPTY';
+		} else {
+			encodedQuery += 'groupsISEMPTY';
+		}
+		if (userRoles.length > 0) {
+			encodedQuery += '^rolesCONTAINS' + userRoles[0];
+			for (i=0; i<userRoles.length; i++) {
+				encodedQuery += '^ORrolesCONTAINS' + userRoles[i];
+			}
+			encodedQuery += '^ORrolesISEMPTY';
+		} else {
+			encodedQuery += '^rolesISEMPTY';
+		}
+
+		return encodedQuery;
+	},
+
+	/*
+	* @function: Gets all active groups the current user is a member of
+	* @return: Array
+	*/
+	_getUserGroups: function() {
+		var groups = [];
+		var grMember = new GlideRecord('sys_user_grmember');
+		grMember.addQuery('group.active', true);
+		grMember.addQuery('user', this.userID);
+		grMember.query();
+		while (grMember.next()) {
+			groups.push(grMember.group.sys_id);
+		}
+		return groups;
+	},
+
+	/*
+	* @function: Gets all active roles assigned to the current user
+	* @return: Array
+	*/
+	_getUserRoles: function() {
+		var roles = [];
+		var userRole = new GlideRecord('sys_user_has_role');
+		userRole.addQuery('state', 'active');
+		userRole.addQuery('user', this.userID);
+		userRole.query();
+		while (userRole.next()) {
+			roles.push(userRole.role.sys_id);
+		}
+		return roles;
+	},
+	
+	/*
+    * @function: Logging function
+	* @input: msg - string of log statement
+	* @input: logLevel - optional level to log at: error, info, debug, warn
+    */	
+    _log: function(msg, logLevel) {
+        logLevel = logLevel || 'info';
+        var unixTime = new Date().getTime();
+        gs[logLevel]('{0}:  {1}', unixTime.toString(), msg);
+    },
+
+    type: 'TableActionUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-09-05 01:46:09</sys_created_on>
+        <sys_id>e402a0eedbd42300de1cfe1b689619e3</sys_id>
+        <sys_mod_count>29</sys_mod_count>
+        <sys_name>TableActionUtil</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_script_include_e402a0eedbd42300de1cfe1b689619e3</sys_update_name>
+        <sys_updated_by>dg42xyz</sys_updated_by>
+        <sys_updated_on>2019-11-10 19:17:47</sys_updated_on>
+    </sys_script_include>
+</record_update>

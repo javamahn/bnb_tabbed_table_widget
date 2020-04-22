@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="omit_if_no_records" label="Omit if no records" language="en" table="x_71627_tab_table_tab">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>omit_if_no_records</element>
+            <help/>
+            <hint>If checked, the tab will not be shown if there are zero records matching all of the filters.</hint>
+            <label>Omit if no records</label>
+            <language>en</language>
+            <name>x_71627_tab_table_tab</name>
+            <plural>Omit if no records</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2019-01-23 00:51:29</sys_created_on>
+            <sys_id>9ba908acdb40001016cc9b81ca9619ac</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Omit if no records</sys_name>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_documentation_x_71627_tab_table_tab_omit_if_no_records_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2019-09-19 22:46:42</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

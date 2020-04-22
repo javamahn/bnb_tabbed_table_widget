@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_71627_tab_table_action">action_type=Catalog Item^EQ<item display_value="Catalog Item" endquery="false" field="action_type" goto="false" newquery="false" operator="=" or="false" value="Catalog Item"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <isolate_script>true</isolate_script>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+
+}]]></script_true>
+        <set_values/>
+        <short_description>Show Catalog Item fields</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-08-18 01:10:47</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>687da768dbc02300de1cfe1b68961944</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Show Catalog Item fields</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_ui_policy_687da768dbc02300de1cfe1b68961944</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2018-08-18 01:10:47</sys_updated_on>
+        <table>x_71627_tab_table_action</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>

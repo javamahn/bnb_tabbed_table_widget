@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="label" label="Label" language="en" table="x_71627_tab_table_filter">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>label</element>
+            <help/>
+            <hint>The primary display label for the tab.</hint>
+            <label>Label</label>
+            <language>en</language>
+            <name>x_71627_tab_table_filter</name>
+            <plural>Labels</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-07-27 22:14:57</sys_created_on>
+            <sys_id>4ba908acdb40001016cc9b81ca96198e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Label</sys_name>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_documentation_x_71627_tab_table_filter_label_en</sys_update_name>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-11-15 22:17:42</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

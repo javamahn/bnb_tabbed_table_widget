@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="modal_widget" label="Modal Widget" language="en" table="x_71627_tab_table_action">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>modal_widget</element>
+            <help/>
+            <hint>The widget to display in the modal for this action.</hint>
+            <label>Modal Widget</label>
+            <language>en</language>
+            <name>x_71627_tab_table_action</name>
+            <plural>Modal Widgets</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-07-27 22:09:12</sys_created_on>
+            <sys_id>5ba908acdb40001016cc9b81ca9619e9</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Modal Widget</sys_name>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_documentation_x_71627_tab_table_action_modal_widget_en</sys_update_name>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-11-15 22:35:19</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

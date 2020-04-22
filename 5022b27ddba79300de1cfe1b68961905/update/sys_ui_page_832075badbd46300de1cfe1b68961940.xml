@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function onDismiss() {
+	GlideModal.get().destroy();
+	return false;
+}]]></client_script>
+        <description>Lists the available variables for a Table Action.</description>
+        <direct>false</direct>
+        <endpoint>x_71627_tab_table_available_variables.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+<g:requires name="scripts/lib/jquery_includes.js"/>
+<link rel="stylesheet" href="styles/heisenberg/heisenberg_all.css" />
+	
+	<g:evaluate var="jvar_variable_array" jelly="true" object="true">
+		var catItem = jelly.sysparm_cat_item;
+		var varArray = new x_71627_tab_table.TableActionUtil().getAvailableVariables(catItem);
+		varArray;
+	</g:evaluate>
+	
+	<g:evaluate var="jvar_variable_values_array" jelly="true" object="true">
+		var table = jelly.sysparm_table;
+		var tab = jelly.sysparm_tab;
+		var varValuesArray = new x_71627_tab_table.TableActionUtil().getAvailableVariableValues(tab, table);
+		varValuesArray;
+	</g:evaluate>
+	
+	<g:ui_form id="available_variables">	
+		<div class="modal-body">
+			<input type="hidden" id="sysparm_cat_item" name="sysparm_cat_item" value="${sysparm_cat_item}" />
+			<input type="hidden" id="sysparm_tab" name="sysparm_tab" value="${sysparm_tab}" />
+			<input type="hidden" id="sysparm_table" name="sysparm_table" value="${sysparm_table}" />
+			<div class="form-group">
+				<div class="col-sm-6">
+					<label class="control-label" for="variable_group">Variables</label>
+					<div id="variable_group">
+						<j:forEach items="${jvar_variable_array}" var="jvar_variable">
+							${jvar_variable}
+							<br />
+						</j:forEach>						
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="control-label" for="variable_values_group">Variable Values</label>
+					<div id="variable_values_group">
+						<j:forEach items="${jvar_variable_values_array}" var="jvar_variable_value">
+							{{${jvar_variable_value}}}
+							<br />
+						</j:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<footer class="modal-footer flex">
+			<g:dialog_button
+				id="dismiss_button"
+				type="submit"
+				style_class="btn btn-primary"
+				style="min-width: 5em;"
+				onclick="onDismiss()">Dismiss</g:dialog_button>	
+		</footer>
+	</g:ui_form>
+
+</j:jelly>]]></html>
+        <name>available_variables</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-09-06 02:05:53</sys_created_on>
+        <sys_id>832075badbd46300de1cfe1b68961940</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>available_variables</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_ui_page_832075badbd46300de1cfe1b68961940</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2018-09-18 00:08:45</sys_updated_on>
+    </sys_ui_page>
+</record_update>

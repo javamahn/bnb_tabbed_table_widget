@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>ignore</disabled>
+        <field>confirm_action</field>
+        <mandatory>false</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-08-18 01:10:00</sys_created_on>
+        <sys_id>3c5d6f28dbc02300de1cfe1b68961951</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>confirm_action</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_ui_policy_action_3c5d6f28dbc02300de1cfe1b68961951</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2018-11-15 22:51:30</sys_updated_on>
+        <table>x_71627_tab_table_action</table>
+        <ui_policy display_value="Show Server Script fields">2a1deb28dbc02300de1cfe1b689619f2</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

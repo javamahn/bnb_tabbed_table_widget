@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Sets a default for the ID field based on the Label.</description>
+        <field>label</field>
+        <global>true</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Default ID</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading || newValue === '') {
+		return;
+	}
+	
+	g_form.setValue('id', newValue.replace(/\s/g, '_').toLowerCase());
+	
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-09-17 23:20:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>866d3a62db642300de1cfe1b689619b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default ID</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_script_client_866d3a62db642300de1cfe1b689619b1</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2018-09-17 23:20:21</sys_updated_on>
+        <table>x_71627_tab_table_filter</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

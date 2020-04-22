@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="widget" label="Widget" language="en" table="x_71627_tab_table_tab">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>widget</element>
+            <help/>
+            <hint>The widget to embed in the tab.</hint>
+            <label>Widget</label>
+            <language>en</language>
+            <name>x_71627_tab_table_tab</name>
+            <plural>Widgets</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-07-27 21:59:30</sys_created_on>
+            <sys_id>dfa908acdb40001016cc9b81ca9619b0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Widget</sys_name>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_documentation_x_71627_tab_table_tab_widget_en</sys_update_name>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-07-31 23:07:12</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

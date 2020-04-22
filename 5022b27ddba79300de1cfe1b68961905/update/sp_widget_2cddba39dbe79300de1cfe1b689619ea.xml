@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(spUtil, $scope, $rootScope, $location) {
+
+	var c = this;
+	c.data.original_filter = c.data.filter;
+	
+	c.setTab = function(tab) {
+		$scope.loadingData = true;
+		c.data.tab = tab.id;
+		c.data.page = tab._widget_options ? (tab._widget_options.page || 'form') : 'form';
+		c.data.original_filter = tab._widget_options ? (tab._widget_options.filter || '') : '';
+		var link = {};
+		link.id = c.data.id;
+		link.tab = tab.id;
+		$location.search(link);
+	};
+	
+	c.setFilter = function(tab, filter) {
+		tab.filters.forEach(function(f) {
+			if (f.condition == filter) {
+				f.active = true;
+			} else {
+				f.active = false;
+			}
+		});
+		tab.filter = filter;
+		tab._widget_options.filter = filter;
+		spUtil.get(tab._widget_id, tab._widget_options).then(function(response) {
+			response.options = tab._widget_options;
+			tab._widget = response;
+		});
+	};
+	
+	$rootScope.$on('data_table.click', function(event,obj) {
+		var link = {};
+		link.id = $scope.data.page;
+		if (!link.id) return;
+		link.table = obj.table;
+		link.sys_id = obj.sys_id;
+		link.view = obj.view || 'sp';
+		$location.search(link);
+	});
+	
+	c.search = function(tab) {
+		var encQry = '';
+		if (c.data.query != '') {
+			if (tab.search_type == 'Advanced') {
+				encQry = tab.search_condition.replace(/\$\{query\}/g, c.data.query);
+			} else {
+				encQry = tab.search_type + '=' + c.data.query;
+			}
+		} else {
+			encQry = c.data.original_filter;
+		}
+		tab.filter = encQry;
+		tab._widget_options.filter = encQry;
+		spUtil.get(tab._widget_id, tab._widget_options).then(function(response) {
+			response.options = tab._widget_options;
+			tab._widget = response;
+		});
+	};
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.panel {&#13;
+  margin-bottom: 0px;&#13;
+}&#13;
+&#13;
+.instructions {&#13;
+  margin-top: 15px;&#13;
+  margin-left: 15px;&#13;
+  margin-right: 15px;&#13;
+}&#13;
+&#13;
+.alert-loadingData {&#13;
+  margin: 1rem; &#13;
+}&#13;
+&#13;
+.p-x-sm {&#13;
+  padding-right: 10px;&#13;
+  padding-left: 10px;&#13;
+}&#13;
+&#13;
+.p-t-xs {&#13;
+  padding-top: 4px;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>tabbed_table_widget</id>
+        <internal>false</internal>
+        <link/>
+        <name>Tabbed Table Widget</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+	data.tabs = [];
+	
+	var widget_instance = $sp.getInstanceRecord();
+	if (!widget_instance)
+		gs.addErrorMessage('Missing widget instance!');
+	
+	var tab_record = new GlideRecord('x_71627_tab_table_tab');
+	tab_record.addQuery('widget_instance.sys_id', widget_instance.getUniqueValue());
+	tab_record.addActiveQuery();
+	tab_record.addNotNullQuery('widget');
+	tab_record.orderBy('order');
+	tab_record.query();
+	while (tab_record.next()) {		
+		var tab = initiateTab(tab_record);		
+		tab._widget_id = tab_record.widget.sys_id.toString();
+		tab._widget_options = getWidgetOptions(tab, tab_record);
+		if (omitTab(tab)) {
+			continue;
+		}
+		tab._widget = $sp.getWidget(tab._widget_id, tab._widget_options);
+		data.tabs.push(tab);
+	}
+	
+	if (data.tabs.length > 0) {
+		data.tab = $sp.getParameter('tab');
+		if (data.tab) {
+			var currentTab = data.tabs.filter(function(tab) { return data.tab == tab.id; })[0];
+			if (currentTab) {
+				data.page = currentTab.page;
+				data.filter = currentTab._widget_options ? (currentTab._widget_options.filter || '') : '';
+			}
+		}
+		data.page = data.page || data.tabs[0]._widget_options.page;
+		data.tab = data.tab || data.tabs[0].id;
+		data.id = $sp.getParameter('id');
+	}
+
+	
+	function initiateTab(tab) {
+		var obj = {};
+		var copyFields = ['id','label','order','widget','widget_instance','widget_options',
+							'show_instructions','instructions','omit_if_no_records',
+							'enable_search','search_type','search_condition','placeholder'];
+		for (var f in copyFields) {
+			var field = copyFields[f];
+			obj[field] = tab.getValue(field);
+		}
+		
+		obj.filters = getFilters(tab);
+		if (obj.widget != gs.getProperty('x_71627_tab_table.custom.widget.id')) {
+			obj.enable_search = false;
+		}
+		
+		return obj;
+	}
+	
+	function getFilters(tab) {
+		var filters = [];
+		var filter_record = new GlideRecord('x_71627_tab_table_filter');
+		filter_record.addQuery('tab.sys_id', tab.getUniqueValue());
+		filter_record.orderBy('order');
+		filter_record.query();
+		while (filter_record.next()) {
+			filters.push({
+				"id": filter_record.getValue('id'),
+				"label": filter_record.getValue('label'),
+				"is_default": filter_record.getValue('default'),
+				"table": filter_record.getValue('table'),
+				"condition": filter_record.getValue('condition'),
+				"tab_id": filter_record.tab.id.toString(),
+				"active": filter_record.getValue('default') == '1'
+			});
+		}
+		return filters;
+	}
+		
+	function getWidgetOptions(tab, tab_record) {
+		var opts = {};
+		
+		if (tab_record.getValue('advanced_widget_options') == true && tab_record.getValue('widget_options_json')) {
+			opts = JSON.parse(tab_record.getValue('widget_options_json'));
+			var basicOpts = JSON.parse(tab_record.getValue('widget_options'));
+			for (var opt in basicOpts) {
+				opts[opt] = basicOpts[opt];
+			}
+		} else {
+			opts = JSON.parse(tab_record.getValue('widget_options'));	
+		}
+		
+		if (tab.filters.length > 0) {
+			opts.filter = tab.filters.filter(function(f) {
+				return f.is_default == 1;
+			})[0].condition;
+		} else if (tab.filter) {
+			opts.filter = tab.filter;
+		}
+		
+		return opts;
+	}
+	
+	function omitTab(tab) {
+		var table, filter;
+		try {
+			if (tab.omit_if_no_records == false) {
+				return false;
+			} else if (tab.filters.length > 0) {
+				table = tab._widget_options.table;
+				filter = tab.filters.map(function(f) {
+					return f.condition;
+				}).join('^NQ');
+			} else {
+				table = tab._widget_options.table;
+				filter = tab._widget_options.filter;
+			}
+			if (!table || !filter) {
+				return false;
+			} else {
+				var rec = new GlideRecord(table);
+				rec.setLimit(1);
+				rec.addEncodedQuery(filter);
+				rec.query();
+				return !rec.hasNext();
+			}
+		} catch (e) {
+			return false;
+		}
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2018-07-27 22:23:28</sys_created_on>
+        <sys_id>2cddba39dbe79300de1cfe1b689619ea</sys_id>
+        <sys_mod_count>257</sys_mod_count>
+        <sys_name>Tabbed Table Widget</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sp_widget_2cddba39dbe79300de1cfe1b689619ea</sys_update_name>
+        <sys_updated_by>dg42xyz</sys_updated_by>
+        <sys_updated_on>2019-11-09 19:14:02</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  
+  <div ng-if="data.tabs.length == 0">
+    <nav class="navbar navbar-light bg-light" style="margin-bottom:0px">
+      <p class="navbar-text text-center" style="float:none;">
+        No data to display.
+      </p>
+    </nav>
+  </div>
+  
+  <div ng-if="data.tabs.length > 0">
+    
+    <ul role="tablist" class="nav nav-tabs" >
+      <li role="presentation" class="nav-item" ng-class='{active:tab.id == data.tab}' ng-repeat="tab in data.tabs">
+        <a role="tab" class="nav-link" ng-click="c.setTab(tab)" data-toggle="tab">
+          {{tab.label}}
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" id="{{tab.id}}" class="tab-pane" ng-class='{active:tab.id == data.tab}' ng-repeat="tab in data.tabs">
+        <div class="form-group row">
+          <div ng-class="{'col-md-9':tab.enable_search == true, 'col-md-12':tab.enable_search == false}">
+            <div class="instructions" ng-if="tab.show_instructions" ng-bind-html="tab.instructions"></div>  
+          </div>
+          <div class="col-md-3" ng-if="tab.enable_search == true">
+            <div class="input-group input-group-rounded p-x-sm p-t-xs">
+              <input type="text" class="form-control" placeholder="{{tab.placeholder}}" ng-model="c.data.query" ng-keyup="$event.keyCode == 13 ? c.search(tab) : null"/>
+              <span class="input-group-btn">
+                <button name="search" type="submit" class="btn btn-info btn-search" ng-click="c.search(tab)">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-body b-t" ng-if="tab.filters.length > 0">
+          <div role="group" class="btn-group" aria-label="Filters">
+            <button type="button" class="btn btn-default" ng-class='{active: filter.active}' ng-click="c.setFilter(tab, filter.condition)" ng-repeat="filter in tab.filters">
+              {{filter.label}}
+            </button>
+          </div>
+        </div>
+
+        <div ng-if="!loadingData">
+          <sp-widget widget="tab._widget"></sp-widget>  
+        </div>
+        
+      	<div class="alert alert-info alert-loadingData" ng-if="loadingData">
+          <fa name="spinner" spin="true"></fa> ${Loading data}...
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

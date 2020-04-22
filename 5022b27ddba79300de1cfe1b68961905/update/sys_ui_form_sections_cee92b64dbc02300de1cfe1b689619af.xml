@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="cee92b64dbc02300de1cfe1b689619af" sys_domain="global" table="x_71627_tab_table_action" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-08-18 00:55:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8ee92b64dbc02300de1cfe1b689619b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_71627_tab_table_action" name="x_71627_tab_table_action" sys_domain="global" view="Default view">cee92b64dbc02300de1cfe1b689619af</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_71627_tab_table_action" sys_domain="global" view="Default view">a9686724dbc02300de1cfe1b689619c7</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-08-18 00:55:04</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-08-18 00:55:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c6e92b64dbc02300de1cfe1b689619b2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_71627_tab_table_action" name="x_71627_tab_table_action" sys_domain="global" view="Default view">cee92b64dbc02300de1cfe1b689619af</sys_ui_form>
+            <sys_ui_section caption="Action Info" display_value="Action Info" name="x_71627_tab_table_action" sys_domain="global" view="Default view">c6e92b64dbc02300de1cfe1b689619b1</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-08-18 00:55:04</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-08-18 00:58:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>219a23a4dbc02300de1cfe1b689619bc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_71627_tab_table_action" name="x_71627_tab_table_action" sys_domain="global" view="Default view">cee92b64dbc02300de1cfe1b689619af</sys_ui_form>
+            <sys_ui_section caption="Filter Conditions" display_value="Filter Conditions" name="x_71627_tab_table_action" sys_domain="global" view="Default view">299a23a4dbc02300de1cfe1b689619b9</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-08-18 00:58:02</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-11-16 22:43:09</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b86473b1db356300de1cfe1b689619ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_71627_tab_table_action" name="x_71627_tab_table_action" sys_domain="global" view="Default view">cee92b64dbc02300de1cfe1b689619af</sys_ui_form>
+            <sys_ui_section caption="Visibility" display_value="Visibility" name="x_71627_tab_table_action" sys_domain="global" view="Default view">f86473b1db356300de1cfe1b689619fc</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-11-16 22:43:09</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_71627_tab_table_action</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-08-18 00:55:04</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>cee92b64dbc02300de1cfe1b689619af</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_71627_tab_table_action</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_ui_form_sections_cee92b64dbc02300de1cfe1b689619af</sys_update_name>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-08-18 00:55:04</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

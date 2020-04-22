@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Widget Info" section_id="ef41c11adb602300de1cfe1b68961969" sys_domain="global" table="x_71627_tab_table_tab" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>widget</element>
+            <position>0</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-12-21 15:00:12</sys_created_on>
+            <sys_id>241a9245db626300de1cfe1b68961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Widget Info" display_value="Widget Info" name="x_71627_tab_table_tab" sys_domain="global" view="Default view">ef41c11adb602300de1cfe1b68961969</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-12-21 15:00:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>widget_options</element>
+            <position>1</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-12-21 15:00:12</sys_created_on>
+            <sys_id>a41a9245db626300de1cfe1b68961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Widget Info" display_value="Widget Info" name="x_71627_tab_table_tab" sys_domain="global" view="Default view">ef41c11adb602300de1cfe1b68961969</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-12-21 15:00:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>advanced_widget_options</element>
+            <position>2</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-12-21 15:00:12</sys_created_on>
+            <sys_id>281a9245db626300de1cfe1b68961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Widget Info" display_value="Widget Info" name="x_71627_tab_table_tab" sys_domain="global" view="Default view">ef41c11adb602300de1cfe1b68961969</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-12-21 15:00:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>widget_options_json</element>
+            <position>3</position>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-12-21 15:00:12</sys_created_on>
+            <sys_id>a81a9245db626300de1cfe1b68961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Widget Info" display_value="Widget Info" name="x_71627_tab_table_tab" sys_domain="global" view="Default view">ef41c11adb602300de1cfe1b68961969</sys_ui_section>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-12-21 15:00:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Widget Info</caption>
+            <header>false</header>
+            <name>x_71627_tab_table_tab</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>dg</sys_created_by>
+            <sys_created_on>2018-09-16 19:39:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ef41c11adb602300de1cfe1b68961969</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Widget Info</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+            <sys_update_name>sys_ui_section_ef41c11adb602300de1cfe1b68961969</sys_update_name>
+            <sys_updated_by>dg</sys_updated_by>
+            <sys_updated_on>2018-09-16 19:39:12</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

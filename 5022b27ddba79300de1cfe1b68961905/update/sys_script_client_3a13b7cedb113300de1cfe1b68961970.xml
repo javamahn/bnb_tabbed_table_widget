@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Updates the URL field when the Portal field changes.</description>
+        <field>portal</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Update URL onChange of Portal</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading) {
+		return;
+	}
+	
+	if (newValue === '') {
+		g_form.clearValue('url');
+		g_scratchpad.portalSuffix = '';
+	} else {
+		g_form.getReference('portal', callback_Portal);
+	}
+	
+}
+
+function callback_Portal(portal) {
+	var portalSuffix = portal.getValue('url_suffix');
+	var spPage = g_scratchpad.spPage;
+	var url = '/' + portalSuffix + '?id=' + spPage;
+	
+	// this is not sent back to the server; update it so the new value is available to other client side scripts
+	g_scratchpad.portalSuffix = portalSuffix;
+	
+	var params = {};
+	params.sys_id = g_scratchpad.catItem;
+	var pairs = g_form.getValue('variable_pairs');
+	if (pairs) {
+		pairs = JSON.parse(pairs);
+		for (var key in pairs) {
+			params[key] = pairs[key];
+		}
+	}
+
+	for (var p in params) {
+		url += '&' + p + '=' + params[p];
+	}
+	
+	g_form.setValue('url', url);
+	
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>dg</sys_created_by>
+        <sys_created_on>2019-05-10 17:44:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3a13b7cedb113300de1cfe1b68961970</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Update URL onChange of Portal</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_script_client_3a13b7cedb113300de1cfe1b68961970</sys_update_name>
+        <sys_updated_by>dg</sys_updated_by>
+        <sys_updated_on>2019-05-10 18:02:50</sys_updated_on>
+        <table>x_71627_tab_table_action</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
