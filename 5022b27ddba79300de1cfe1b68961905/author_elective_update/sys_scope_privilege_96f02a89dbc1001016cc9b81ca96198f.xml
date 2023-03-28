@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="DELETE">
+        <operation>execute</operation>
+        <source_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-11-09 18:18:28</sys_created_on>
+        <sys_id>96f02a89dbc1001016cc9b81ca96198f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SysList</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_update_name>sys_scope_privilege_96f02a89dbc1001016cc9b81ca96198f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-11-09 18:18:28</sys_updated_on>
+        <target_name>SysList</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>sys_script_include</target_type>
+    </sys_scope_privilege>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</application>
+        <file_path/>
+        <instance_id>f90857ccdb7613804c1ff70fbf9619b9</instance_id>
+        <instance_name>dev61430</instance_name>
+        <name>sys_scope_privilege_96f02a89dbc1001016cc9b81ca96198f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>execute</operation><source_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</source_scope><status>allowed</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2019-11-09 18:18:28</sys_created_on><sys_id>96f02a89dbc1001016cc9b81ca96198f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>SysList</sys_name><sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package><sys_policy/><sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope><sys_update_name>sys_scope_privilege_96f02a89dbc1001016cc9b81ca96198f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2019-11-09 18:18:28</sys_updated_on><target_name>SysList</target_name><target_scope display_value="Global">global</target_scope><target_type>sys_script_include</target_type></sys_scope_privilege></record_update>]]></payload>
+        <payload_hash>187034754</payload_hash>
+        <record_name>SysList</record_name>
+        <reverted_from/>
+        <source>5f013fa5dbe3330016cc9b81ca961936</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-11-09 18:18:28</sys_created_on>
+        <sys_id>96f02a89dbc1001016cc9b81ca961990</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16e51638b900000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-11-09 18:18:28</sys_updated_on>
+        <type>Cross scope privilege</type>
+        <update_guid>def02a8967c1001020a53e8bb8e8fb8f</update_guid>
+        <update_guid_history>def02a8967c1001020a53e8bb8e8fb8f:187034754</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>dg42xyz</sys_created_by>
+        <sys_created_on>2019-11-09 20:02:29</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_db_object display_value="" name="sys_scope_privilege">sys_scope_privilege</sys_db_object>
+        <sys_id>08246618e9234e809787979ef9109000</sys_id>
+        <sys_metadata>96f02a89dbc1001016cc9b81ca96198f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SysList</sys_name>
+        <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
+        <sys_scope_delete display_value="">0858e6d4c86547f6b58cd95d51b41de4</sys_scope_delete>
+        <sys_update_name>sys_scope_privilege_96f02a89dbc1001016cc9b81ca96198f</sys_update_name>
+        <sys_update_version display_value="sys_scope_privilege_96f02a89dbc1001016cc9b81ca96198f">96f02a89dbc1001016cc9b81ca961990</sys_update_version>
+        <sys_updated_by>dg42xyz</sys_updated_by>
+        <sys_updated_on>2019-11-09 20:02:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

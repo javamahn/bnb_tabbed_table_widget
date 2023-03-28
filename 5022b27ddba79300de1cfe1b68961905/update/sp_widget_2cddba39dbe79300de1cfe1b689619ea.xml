@@ -234,11 +234,13 @@
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>dg</sys_created_by>
         <sys_created_on>2018-07-27 22:23:28</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2cddba39dbe79300de1cfe1b689619ea</sys_id>
         <sys_mod_count>257</sys_mod_count>
         <sys_name>Tabbed Table Widget</sys_name>
         <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
         <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
         <sys_update_name>sp_widget_2cddba39dbe79300de1cfe1b689619ea</sys_update_name>
         <sys_updated_by>dg42xyz</sys_updated_by>

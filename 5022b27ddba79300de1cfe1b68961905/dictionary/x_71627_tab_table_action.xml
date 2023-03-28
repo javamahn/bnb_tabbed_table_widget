@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="05857ebddba79300de1cfe1b6896195f" label="Table Action" max_length="40" name="x_71627_tab_table_action" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Action Type" mandatory="true" max_length="40" name="action_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Catalog Item" value="Catalog Item"/>
+                <element inactive_on_update="false" label="Modal Widget" value="Modal Widget"/>
+                <element inactive_on_update="false" label="Server Script" value="Server Script"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The Catalog Item this action applies to." label="Catalog Item" max_length="32" name="cat_item" reference="sc_cat_item" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" dependent="table" dependent_on_field="table" hint="The condition that must evaluate to &quot;true&quot; for the logged in user for this action to be visible." label="Condition" max_length="4000" name="condition" type="conditions" use_dependent_field="true"/>
+        <element hint="The message to present to the user as confirmation before the action runs." label="Confirmation Text" max_length="100" name="confirmation_text" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Controls whether the user must confirm that they would like to proceed before the action runs.  If selected, the confirmation text must be provided." label="Confirm Action" max_length="40" name="confirm_action" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" hint="List of groups to restrict access to." label="Groups" max_length="4000" name="groups" reference="sys_user_group" type="glide_list"/>
+        <element hint="The hint to display when hovering over the action." label="Hint" max_length="50" name="hint" type="string"/>
+        <element hint="The title for the widget modal." label="Modal Title" max_length="40" name="modal_title" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The widget to display in the modal for this action." label="Modal Widget" max_length="32" name="modal_widget" reference="sp_widget" type="reference"/>
+        <element hint="The primary display name for the tab." label="Name" mandatory="true" max_length="30" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="100" hint="The order to display this action relative to other actions where the condition applies for the logged in user." label="Order" max_length="40" name="order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" default="javascript:new x_71627_tab_table.TableActionUtil().getDefaultPortal().getUniqueValue()" label="Portal" max_length="32" name="portal" reference="sp_portal" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" hint="List of roles to restrict access to." label="Roles" max_length="4000" name="roles" reference="sys_user_role" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" default="answer = (function runScript(source, action) {&#13;&#10;&#13;&#10;&#9;/*&#13;&#10;&#9; * source = an object representing the row in the data table that &#13;&#10;&#9; *          the action was executed from&#13;&#10;&#9; *&#13;&#10;&#9; * action = an ojbect containing field values from this record&#13;&#10;&#9; *&#13;&#10;&#9; */&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;})(source, action);" hint="The server script to execute for this action." label="Server Script" max_length="8000" name="server_script" type="script"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The tab that this action applies to." label="Tab" max_length="32" name="tab" reference="x_71627_tab_table_tab" type="reference"/>
+        <element attributes="base_start=true,edge_encryption_enabled=true" hint="The table that the filter condition applies to." label="Table" max_length="80" name="table" type="table_name"/>
+        <element hint="The URL that the user will be redirected to." label="URL" max_length="254" name="url" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Name/value pairs to use as input." label="Variable Pairs" max_length="4000" name="variable_pairs" type="simple_name_values"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Widget Instance" max_length="32" name="widget_instance" reference="sp_instance" type="reference"/>
+        <index name="index">
+            <element name="cat_item"/>
+        </index>
+        <index name="index2">
+            <element name="modal_widget"/>
+        </index>
+        <index name="index3">
+            <element name="portal"/>
+        </index>
+        <index name="index4">
+            <element name="tab"/>
+        </index>
+        <index name="index5">
+            <element name="widget_instance"/>
+        </index>
+    </element>
+</database>

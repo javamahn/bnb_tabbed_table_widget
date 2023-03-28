@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="cfb5b27ddba79300de1cfe1b68961912" label="Filter" max_length="40" name="x_71627_tab_table_filter" type="collection">
+        <element attributes="edge_encryption_enabled=true" dependent="table" dependent_on_field="table" hint="The encoded query to apply as the filter." label="Condition" max_length="4000" name="condition" type="conditions" use_dependent_field="true"/>
+        <element attributes="edge_encryption_enabled=true" hint="Controls whether this filter is applied to the widget by default when the tab is selected." label="Default" max_length="40" name="default" type="boolean"/>
+        <element hint="Unique ID for the tab." label="ID" max_length="40" name="id" type="string"/>
+        <element display="true" hint="The primary display label for the tab." label="Label" max_length="40" name="label" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="The order from left to right that this filter will appear relative to other filters for the tab." label="Order" max_length="40" name="order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The tab where this filter is visible." label="Tab" max_length="32" name="tab" reference="x_71627_tab_table_tab" type="reference"/>
+        <element attributes="base_start=true,edge_encryption_enabled=true" hint="The table that the filter condition applies to." label="Table" max_length="80" name="table" type="table_name"/>
+        <index name="index">
+            <element name="tab"/>
+        </index>
+    </element>
+</database>

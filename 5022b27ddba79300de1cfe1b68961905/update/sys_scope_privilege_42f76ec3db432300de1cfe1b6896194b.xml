@@ -6,11 +6,13 @@
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>dg</sys_created_by>
         <sys_created_on>2019-01-21 17:40:09</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>42f76ec3db432300de1cfe1b6896194b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>SysRelatedList</sys_name>
         <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
         <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
         <sys_update_name>sys_scope_privilege_42f76ec3db432300de1cfe1b6896194b</sys_update_name>
         <sys_updated_by>dg</sys_updated_by>

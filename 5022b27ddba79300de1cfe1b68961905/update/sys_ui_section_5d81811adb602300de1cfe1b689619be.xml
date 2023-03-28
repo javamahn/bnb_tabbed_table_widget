@@ -120,14 +120,16 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>dg</sys_created_by>
             <sys_created_on>2018-09-16 19:40:08</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>5d81811adb602300de1cfe1b689619be</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Visibility</sys_name>
+            <sys_name>x_71627_tab_table_tab</sys_name>
             <sys_overrides/>
             <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
             <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
             <sys_update_name>sys_ui_section_5d81811adb602300de1cfe1b689619be</sys_update_name>
             <sys_updated_by>dg</sys_updated_by>

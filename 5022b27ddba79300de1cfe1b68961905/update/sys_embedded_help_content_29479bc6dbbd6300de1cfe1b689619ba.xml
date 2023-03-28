@@ -13,12 +13,13 @@
         <page>x_71627_tab_table_action</page>
         <product>1</product>
         <qualifier/>
-        <role display_value="sp_admin" name="sp_admin">cd640d10d7101200a9addd173e24d4cd</role>
+        <role display_value="sp_admin" name="sp_admin">ccd527e313f9f2007a05da128144b0b3</role>
         <role_order>10</role_order>
         <snc_created>false</snc_created>
         <sys_class_name>sys_embedded_help_content</sys_class_name>
         <sys_created_by>dg</sys_created_by>
         <sys_created_on>2018-11-17 15:15:07</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>29479bc6dbbd6300de1cfe1b689619ba</sys_id>
@@ -26,11 +27,11 @@
         <sys_name>Data Table Action</sys_name>
         <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
         <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
         <sys_update_name>sys_embedded_help_content_29479bc6dbbd6300de1cfe1b689619ba</sys_update_name>
         <sys_updated_by>dg42xyz</sys_updated_by>
         <sys_updated_on>2019-11-06 22:59:09</sys_updated_on>
         <version>all</version>
     </sys_embedded_help_content>
-    <sys_translated_text action="delete_multiple" query="documentkey=29479bc6dbbd6300de1cfe1b689619ba"/>
 </record_update>

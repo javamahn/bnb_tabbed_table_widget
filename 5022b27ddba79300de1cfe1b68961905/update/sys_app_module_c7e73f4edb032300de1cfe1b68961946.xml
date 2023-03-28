@@ -3,6 +3,7 @@
         <active>true</active>
         <application display_value="Data Table Tab Administration">93092dd1db312300de1cfe1b6896197a</application>
         <assessment/>
+        <content_page/>
         <device_type/>
         <filter/>
         <hint>Manage filters for Data Table widget instances.</hint>
@@ -10,6 +11,7 @@
         <image/>
         <link_type>LIST</link_type>
         <map_page/>
+        <mobile_app_module/>
         <mobile_title>Table Filters</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>x_71627_tab_table_filter</name>
@@ -18,9 +20,12 @@
         <query/>
         <report/>
         <roles/>
+        <survey/>
+        <survey_overwrite>false</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>dg</sys_created_by>
         <sys_created_on>2019-01-18 20:57:02</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>c7e73f4edb032300de1cfe1b68961946</sys_id>
@@ -29,6 +34,7 @@
         <sys_overrides/>
         <sys_package display_value="Tabbed Table Widget" source="x_71627_tab_table">5022b27ddba79300de1cfe1b68961905</sys_package>
         <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Tabbed Table Widget">5022b27ddba79300de1cfe1b68961905</sys_scope>
         <sys_update_name>sys_app_module_c7e73f4edb032300de1cfe1b68961946</sys_update_name>
         <sys_updated_by>dg</sys_updated_by>
@@ -37,6 +43,7 @@
         <title>Table Filters</title>
         <uncancelable>false</uncancelable>
         <view_name/>
+        <view_on_mobile>false</view_on_mobile>
         <window_name/>
     </sys_app_module>
 </record_update>

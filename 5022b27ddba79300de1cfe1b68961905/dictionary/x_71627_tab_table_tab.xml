@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="68353271dbe79300de1cfe1b689619b8" label="Tab" max_length="40" name="x_71627_tab_table_tab" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Advanced Widget Options" max_length="40" name="advanced_widget_options" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" hint="If checked, enables an integrated search to dynamically update the condition applied to the table." label="Enable Search" max_length="40" name="enable_search" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" hint="List of groups to restrict access to." label="Groups" max_length="1024" name="groups" reference="sys_user_group" type="glide_list"/>
+        <element hint="Unique ID for the tab." label="ID" mandatory="true" max_length="40" name="id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Displays above the tab's widget." label="Instructions" max_length="8000" name="instructions" type="html"/>
+        <element display="true" hint="The primary display label for the tab." label="Label" mandatory="true" max_length="40" name="label" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="If checked, the tab will not be shown if there are zero records matching all of the filters." label="Omit if no records" max_length="40" name="omit_if_no_records" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" default="100" hint="The order from left to right that this tab will appear relative to other tabs for the widget instance." label="Order" mandatory="true" max_length="40" name="order" type="integer"/>
+        <element hint="Placeholder text displayed in the search bar." label="Placeholder" max_length="40" name="placeholder" type="string"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" hint="List of roles to restrict access to." label="Roles" max_length="1024" name="roles" reference="sys_user_role" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" dependent="table" dependent_on_field="table" hint="Condition to apply when searching.  Use ${query} to access the query string entered." label="Search Condition" max_length="4000" name="search_condition" type="conditions" use_dependent_field="true"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Search Type" max_length="40" name="search_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Advanced" value="Advanced"/>
+                <element inactive_on_update="false" label="AND Query" value="IR_AND_QUERY"/>
+                <element inactive_on_update="false" label="AND/OR Query" value="IR_AND_OR_QUERY"/>
+                <element inactive_on_update="false" label="Keyword" value="123TEXTQUERY321"/>
+                <element inactive_on_update="false" label="OR Query" value="IR_OR_QUERY"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="When selected, enables an HTML field to display above the tab's widget." label="Show Instructions" max_length="40" name="show_instructions" type="boolean"/>
+        <element attributes="base_start=true,edge_encryption_enabled=true" label="Table" max_length="80" name="table" type="table_name"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The widget to embed in the tab." label="Widget" max_length="32" name="widget" reference="sp_widget" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" hint="The widget instance where this tab is visible." label="Widget Instance" max_length="32" name="widget_instance" reference="sp_instance" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="Name/value pairs to use as widget input options for the chosen widget." label="Widget Options" max_length="4000" name="widget_options" type="simple_name_values"/>
+        <element attributes="edge_encryption_enabled=true" label="Additional options, JSON format" max_length="4000" name="widget_options_json" type="script_server"/>
+        <index name="index">
+            <element name="widget"/>
+        </index>
+        <index name="index2">
+            <element name="widget_instance"/>
+        </index>
+    </element>
+</database>
